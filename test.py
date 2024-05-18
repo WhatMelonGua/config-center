@@ -10,13 +10,15 @@
 """  # [By: HuYw]
 
 # region |- Import -|
-from cfgc import center as cc
+import cfgc
 import datetime
 import os
 # endregion
 
+cfgc.envs.view()
+
 # region |- Create an Env -|
-env = cc.Environment()
+env = cfgc.center.Environment()
 env.define(
     "cfgc-base",  # env name: test
     {"date": datetime.datetime.now().strftime('%Y-%m-%d')},  # env domain(data): test
@@ -29,9 +31,8 @@ env.save(safe=True)
 del env
 
 # region |- Reload the Env -|
-from cfgc import center as cc
 from pprint import pprint
-load_env = cc.Environment(load="cfgc-base")     # env name: test
+load_env = cfgc.center.Environment(load="cfgc-base")     # env name: test
 pprint(dir(load_env.engine))
 # endregion
 
@@ -39,7 +40,7 @@ pprint(dir(load_env.engine))
 load_env.export("../export")
 del load_env
 # reload
-load_env = cc.Environment()
+load_env = cfgc.center.Environment()
 load_env.load_path("../export")     # env name: export
 pprint(dir(load_env.engine.center))
 print(load_env.domain)

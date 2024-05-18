@@ -22,13 +22,15 @@ FORMAT = "pkl"
 def view():
     envs = os.listdir(PATH)
     for i, e in enumerate(envs):
-        print(f"{i} -\t{e.split('.', maxsplit=1)[0]}")
+        fname, ftype = os.path.splitext(e)
+        if ftype == "pkl":
+            print(f"{i} -\t{e.split('.', maxsplit=1)[0]}")
 
 
 def delete(name: str):
     envs = os.listdir(PATH)
     for e in envs:
-        fname, ftype = e.split('.', maxsplit=1)
+        fname, ftype = os.path.splitext(e)
         if ftype == "pkl" and name == fname:
             os.remove(PATH / e)
             print(f"Env File [{e}] has been removed")
