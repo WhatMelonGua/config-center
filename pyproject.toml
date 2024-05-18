@@ -7,7 +7,7 @@ packages = ["cfgc"]
 
 [project] 
 name = "config-center"
-version = "0.0.0a3"
+version = "0.0.1a5"
 keywords = ["config", "pipeline", "local", "tool"]
 description = "A site-package to create your local pypi-sitepackage, manage your own scripts pack as an env!"
 readme = "README.md"

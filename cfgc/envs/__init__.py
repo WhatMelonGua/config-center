@@ -20,6 +20,10 @@ FORMAT = "pkl"
 # Func
 
 def view():
+    """
+    查看当前存在的环境名称
+    :return:
+    """
     envs = os.listdir(PATH)
     for i, e in enumerate(envs):
         fname, ftype = os.path.splitext(e)
@@ -28,6 +32,11 @@ def view():
 
 
 def delete(name: str):
+    """
+    删除对应 name 的环境文件
+    :param name:
+    :return:
+    """
     envs = os.listdir(PATH)
     for e in envs:
         fname, ftype = os.path.splitext(e)
