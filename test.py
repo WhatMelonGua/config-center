@@ -22,7 +22,7 @@ env = cfgc.center.Environment()
 env.define(
     "cfgc-base",  # env name: test
     {"date": datetime.datetime.now().strftime('%Y-%m-%d')},  # env domain(data): test
-    os.path.join(cc.PATH.center)  # env engine(site-package): cfgc self
+    os.path.join(cfgc.center.PATH.center)  # env engine(site-package): cfgc self
     )
 env.save(safe=True)
 # Input: yes

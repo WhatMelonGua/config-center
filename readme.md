@@ -19,6 +19,58 @@
 
 ------
 
+## Install
+
+```python
+pip install config-center
+```
+
+## Usage
+
+```python
+# region |- Import -|
+import cfgc
+import datetime
+import os
+# endregion
+
+# list all envs
+cfgc.envs.view()
+
+# region |- Create an Env -|
+env = cfgc.center.Environment()
+env.define(
+    "cfgc-base",  # env name: test
+    {"date": datetime.datetime.now().strftime('%Y-%m-%d')},  # env domain(data): test
+    os.path.join(cfgc.center.PATH.center)  # env engine(site-package): cfgc self
+    )
+env.save(safe=True)
+# Input: yes
+# endregion
+
+del env
+
+# region |- Reload the Env -|
+from pprint import pprint
+load_env = cfgc.center.Environment(load="cfgc-base")     # env name: test
+pprint(dir(load_env.engine))
+# endregion
+
+# region |- Export the Env -|
+load_env.export("../export")
+del load_env
+# reload
+load_env = cfgc.center.Environment()
+load_env.load_path("../export")     # env name: export
+pprint(dir(load_env.engine.center))
+print(load_env.domain)
+# endregion
+```
+
+
+
+------
+
 **CFGC实现非常简单，仅仅是使用了部分路径定义、模块加载的知识即可完成**
 
 **而它可以保证让你在本地构建一些简单的python包，而无需上传pypi下载，来达到随心import**
