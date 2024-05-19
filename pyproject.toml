@@ -7,7 +7,7 @@ packages = ["cfgc"]
 
 [project] 
 name = "config-center"
-version = "0.0.1a5"
+version = "0.0.39"
 keywords = ["config", "pipeline", "local", "tool"]
 description = "A site-package to create your local pypi-sitepackage, manage your own scripts pack as an env!"
 readme = "README.md"
@@ -17,8 +17,6 @@ dependencies = [
   "importlib",
   "pathlib",
   "pickle",
-  "shutil",
-  "os", "sys",
 ]
 authors = [
   {name = "VaterFus", email = "1107818699@qq.com"},
