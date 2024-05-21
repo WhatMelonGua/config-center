@@ -59,7 +59,7 @@ class Environment:
         engine = os.path.normpath(engine)
         self.name = name
         self.domain = domain if isinstance(domain, Domain) else Domain(domain)
-        self.__engine = str(engine)
+        self.__engine = Path(engine)
         self.engine = Path(engine)
     def drive(self):
         """
@@ -77,8 +77,8 @@ class Environment:
         :param safe: 安全模式, 默认开启 ——当存在env时提示是否覆盖, 否则将直接覆盖
         :return:
         """
-        assert self.engine.is_absolute(), "engine must be a Absolute Path"    # 仅支持绝对定位 & 目录
-        assert self.engine.is_dir(), "engine only can be a Dir"
+        assert self.__engine.is_absolute(), "engine must be a Absolute Path"    # 仅支持绝对定位 & 目录
+        assert self.__engine.is_dir(), "engine only can be a Dir"
         save_path = PATH.envs / f'{self.name}.pkl'
         if os.path.exists(save_path):
             status = True and safe
